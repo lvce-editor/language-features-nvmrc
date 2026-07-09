@@ -1,10 +1,16 @@
-import type { Test } from '@lvce-editor/test-with-playwright'
-
 interface NodeRelease {
   readonly version?: unknown
 }
 
-type TestApi = Parameters<Test>[0]
+interface TestApi {
+  readonly Command: any
+  readonly Editor: any
+  readonly FileSystem: any
+  readonly Locator: any
+  readonly Main: any
+  readonly Workspace: any
+  readonly expect: any
+}
 
 export const openNvmrcCompletion = async (
   { Command, Editor, FileSystem, Main, Workspace }: TestApi,
@@ -35,8 +41,8 @@ export const expectNoCompletionItem = async (
   { Locator, expect }: TestApi,
   label: string,
 ): Promise<void> => {
-  const completionItems = Locator('.EditorCompletionItem')
-  await expect(completionItems.filter({ hasText: label })).toHaveCount(0)
+  const completionItems = Locator('.EditorCompletionItem', { hasText: label })
+  await expect(completionItems).toHaveCount(0)
 }
 
 export const releases = [
@@ -46,4 +52,3 @@ export const releases = [
   { version: 'v18.20.5' },
   { version: 'v16.20.2' },
 ]
-
