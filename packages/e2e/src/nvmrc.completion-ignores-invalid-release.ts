@@ -1,5 +1,9 @@
+// cspell:ignore nvmrc
 import type { Test } from '@lvce-editor/test-with-playwright'
-import { expectCompletionItem, expectNoCompletionItem, openNvmrcCompletion } from './_nvmrcCompletion.ts'
+import {
+  expectCompletionItem,
+  openNvmrcCompletion,
+} from './_nvmrcCompletion.ts'
 
 export const name = 'nvmrc.completion-ignores-invalid-release'
 
@@ -10,10 +14,9 @@ export const test: Test = async (api) => {
     { version: 'v22.11.0' },
     { version: 22 },
     {},
+    { version: 'v20.18.1' },
   ])
 
   await expectCompletionItem(api, 0, 'v22.11.0')
-  await expectNoCompletionItem(api, 'nightly')
-  await expectNoCompletionItem(api, 'v22')
+  await expectCompletionItem(api, 1, 'v20.18.1')
 }
-

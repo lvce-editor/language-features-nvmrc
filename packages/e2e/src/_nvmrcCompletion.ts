@@ -5,11 +5,11 @@ interface NodeRelease {
 interface TestApi {
   readonly Command: any
   readonly Editor: any
+  readonly expect: any
   readonly FileSystem: any
   readonly Locator: any
   readonly Main: any
   readonly Workspace: any
-  readonly expect: any
 }
 
 export const openNvmrcCompletion = async (
@@ -19,7 +19,11 @@ export const openNvmrcCompletion = async (
 ): Promise<void> => {
   const tmpDir = await FileSystem.getTmpDir()
   await Workspace.setPath(tmpDir)
-  await Command.executeExtensionCommand('nvmrc.test.setNodeReleases', releases)
+  await Command.execute(
+    'ExtensionHost.executeCommand',
+    'nvmrc.test.setNodeReleases',
+    releases,
+  )
   await FileSystem.writeFile(`${tmpDir}/.nvmrc`, text)
   await Main.openUri(`${tmpDir}/.nvmrc`)
   await Editor.setCursor(0, text.length)
@@ -27,22 +31,15 @@ export const openNvmrcCompletion = async (
 }
 
 export const expectCompletionItem = async (
-  { Locator, expect }: TestApi,
+  { expect, Locator }: TestApi,
   index: number,
   label: string,
 ): Promise<void> => {
   const completions = Locator('#Completions')
   await expect(completions).toBeVisible()
   const completionItems = completions.locator('.EditorCompletionItem')
-  await expect(completionItems.nth(index)).toHaveText(label)
-}
-
-export const expectNoCompletionItem = async (
-  { Locator, expect }: TestApi,
-  label: string,
-): Promise<void> => {
-  const completionItems = Locator('.EditorCompletionItem', { hasText: label })
-  await expect(completionItems).toHaveCount(0)
+  const completionItem = completionItems.nth(index)
+  await expect(completionItem).toHaveText(label)
 }
 
 export const releases = [

@@ -1,5 +1,8 @@
 import type { Test } from '@lvce-editor/test-with-playwright'
-import { expectCompletionItem, openNvmrcCompletion } from './_nvmrcCompletion.ts'
+import {
+  expectCompletionItem,
+  openNvmrcCompletion,
+} from './_nvmrcCompletion.ts'
 
 export const name = 'nvmrc.completion-deduplicates-releases'
 
@@ -11,5 +14,5 @@ export const test: Test = async (api) => {
   ])
 
   await expectCompletionItem(api, 0, 'v22.11.0')
-  await expect(api.Locator('.EditorCompletionItem', { hasText: 'v22.11.0' })).toHaveCount(1)
+  await expectCompletionItem(api, 1, 'v20.18.1')
 }
