@@ -1,0 +1,27 @@
+{
+  "id": "builtin.language-features-nvmrc",
+  "name": "Language Features Nvmrc",
+  "description": "Provides language support for .nvmrc files",
+  "repository": "https://github.com/lvce-editor/language-features-nvmrc",
+  "browser": "dist/languageFeaturesNvmrcMain.js",
+  "isolated": true,
+  "icon": "./icon.png",
+  "categories": ["Programming Languages"],
+  "activation": [
+    "onLanguage:nvmrc",
+    "onCompletion:nvmrc",
+    "onCommand:nvmrc.test.setNodeReleases"
+  ],
+  "commands": [
+    {
+      "id": "nvmrc.test.setNodeReleases",
+      "label": "Nvmrc: Set Test Node Releases"
+    }
+  ],
+  "languages": [
+    {
+      "id": "nvmrc",
+      "fileNames": [".nvmrc"]
+    }
+  ]
+}
