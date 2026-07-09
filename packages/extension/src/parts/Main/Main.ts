@@ -1,30 +1,24 @@
-import {
-  activate as activateExtensionApi,
-  registerFormattingProvider,
-  registerStatusBarItemProvider,
-} from '@lvce-editor/api'
-import * as ExtensionHostFormattingProviderPrettier from '../ExtensionHost/ExtensionHostFormattingProviderPrettier.ts'
-import * as LanguageIds from '../LanguageIds/LanguageIds.ts'
-import * as StatusBar from '../StatusBar/StatusBar.ts'
+// @ts-nocheck
+import * as NodeReleaseCache from '../NodeReleaseCache/NodeReleaseCache.ts'
+import * as NodeReleaseCompletion from '../NodeReleaseCompletion/NodeReleaseCompletion.ts'
 
 const state = {
   isActivated: false,
 }
 
-export const activate = async (): Promise<void> => {
+export const activate = (): void => {
   if (state.isActivated) {
     return
   }
   state.isActivated = true
-  await activateExtensionApi()
-  registerStatusBarItemProvider(StatusBar)
-  for (const languageId of LanguageIds.languageIds) {
-    registerFormattingProvider({
-      ...ExtensionHostFormattingProviderPrettier,
-      id: `prettier.${languageId}`,
-      languageId,
-    })
-  }
+  vscode.registerCompletionProvider(NodeReleaseCompletion)
+  vscode.registerCommand({
+    id: 'nvmrc.test.setNodeReleases',
+    execute(releases: readonly NodeReleaseCache.NodeRelease[]): void {
+      NodeReleaseCache.set(releases)
+    },
+  })
 }
 
 export const deactivate = (): void => {}
+

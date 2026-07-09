@@ -1,8 +1,0 @@
-import * as PrettierModule from '../PrettierModule/PrettierModule.ts'
-import * as PrettierModuleId from '../PrettierModuleId/PrettierModuleId.ts'
-
-const Prettier: any = await PrettierModule.load(PrettierModuleId.Standalone)
-
-export const { format } = Prettier
-
-export const { formatWithCursor } = Prettier
