@@ -1,7 +1,7 @@
 {
-  "name": "builtin.prettier-monorepo",
+  "name": "builtin.language-features-nvmrc-monorepo",
   "version": "0.0.0-dev",
-  "description": "Prettier extension monorepo for Lvce Editor",
+  "description": "Nvmrc language features extension monorepo for Lvce Editor",
   "type": "module",
   "scripts": {
     "build": "node packages/build/src/build.js",

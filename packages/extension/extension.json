@@ -1,84 +1,27 @@
 {
-  "id": "builtin.prettier",
-  "name": "Prettier",
-  "description": "Code formatter using prettier",
-  "repository": "https://github.com/lvce-editor/prettier",
-  "browser": "dist/prettierMain.js",
+  "id": "builtin.language-features-nvmrc",
+  "name": "Language Features Nvmrc",
+  "description": "Provides language support for .nvmrc files",
+  "repository": "https://github.com/lvce-editor/language-features-nvmrc",
+  "browser": "dist/languageFeaturesNvmrcMain.js",
   "isolated": true,
   "icon": "./icon.png",
-  "categories": ["Formatters"],
+  "categories": ["Programming Languages"],
   "activation": [
-    "onStatusBarItem",
-    "onFormatting:css",
-    "onFormatting:json",
-    "onFormatting:javascript",
-    "onFormatting:typescript",
-    "onFormatting:handlebars",
-    "onFormatting:html",
-    "onFormatting:graphql",
-    "onFormatting:yaml",
-    "onFormatting:markdown"
+    "onLanguage:nvmrc",
+    "onCompletion:nvmrc",
+    "onCommand:nvmrc.test.setNodeReleases"
   ],
-  "formattingProviders": [
+  "commands": [
     {
-      "id": "prettier.css",
-      "languageId": "css"
-    },
-    {
-      "id": "prettier.handlebars",
-      "languageId": "handlebars"
-    },
-    {
-      "id": "prettier.html",
-      "languageId": "html"
-    },
-    {
-      "id": "prettier.json",
-      "languageId": "json"
-    },
-    {
-      "id": "prettier.javascript",
-      "languageId": "javascript"
-    },
-    {
-      "id": "prettier.typescript",
-      "languageId": "typescript"
-    },
-    {
-      "id": "prettier.graphql",
-      "languageId": "graphql"
-    },
-    {
-      "id": "prettier.yaml",
-      "languageId": "yaml"
-    },
-    {
-      "id": "prettier.markdown",
-      "languageId": "markdown"
+      "id": "nvmrc.test.setNodeReleases",
+      "label": "Nvmrc: Set Test Node Releases"
     }
   ],
   "languages": [
     {
-      "id": "handlebars",
-      "extensions": [".hbs", ".handlebars"]
-    },
-    {
-      "id": "json",
-      "fileNames": [".prettierrc"]
-    },
-    {
-      "id": "ignore",
-      "fileNames": [".prettierignore"]
-    }
-  ],
-  "jsonValidation": [
-    {
-      "fileMatch": ".prettierrc",
-      "url": "https://json.schemastore.org/prettierrc"
-    },
-    {
-      "fileMatch": ".prettierrc.json",
-      "url": "https://json.schemastore.org/prettierrc"
+      "id": "nvmrc",
+      "fileNames": [".nvmrc"]
     }
   ]
 }
