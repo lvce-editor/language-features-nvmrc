@@ -2,7 +2,9 @@ import type { NodeRelease } from '../NodeReleaseCache/NodeReleaseCache.ts'
 
 const nodeVersionRegex = /^v\d+\.\d+\.\d+$/
 
-export const getVersions = (releases: readonly NodeRelease[]): readonly string[] => {
+export const getVersions = (
+  releases: readonly NodeRelease[],
+): readonly string[] => {
   const versions: string[] = []
   const seen = new Set<string>()
   for (const release of releases) {
@@ -20,4 +22,3 @@ export const getVersions = (releases: readonly NodeRelease[]): readonly string[]
   }
   return versions
 }
-

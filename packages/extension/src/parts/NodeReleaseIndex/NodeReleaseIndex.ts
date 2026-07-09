@@ -2,7 +2,9 @@ import type { NodeRelease } from '../NodeReleaseCache/NodeReleaseCache.ts'
 
 const nodeReleaseIndexUrl = 'https://nodejs.org/dist/index.json'
 
-export const fetchNodeReleaseIndex = async (): Promise<readonly NodeRelease[]> => {
+export const fetchNodeReleaseIndex = async (): Promise<
+  readonly NodeRelease[]
+> => {
   const response = await fetch(nodeReleaseIndexUrl)
   if (!response.ok) {
     throw new Error(`Failed to fetch Node.js versions: ${response.status}`)
@@ -13,4 +15,3 @@ export const fetchNodeReleaseIndex = async (): Promise<readonly NodeRelease[]> =
   }
   return json
 }
-

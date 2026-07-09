@@ -2,16 +2,16 @@ import * as NodeReleaseCache from '../NodeReleaseCache/NodeReleaseCache.ts'
 import * as NodeReleaseVersion from '../NodeReleaseVersion/NodeReleaseVersion.ts'
 
 interface TextDocument {
+  readonly languageId: string
   readonly text: string
   readonly uri: string
-  readonly languageId: string
   readonly version: number
 }
 
 interface CompletionItem {
-  readonly label: string
-  readonly insertText: string
   readonly detail: string
+  readonly insertText: string
+  readonly label: string
   readonly sortText: string
 }
 
@@ -26,10 +26,9 @@ export const provideCompletions = async (
   const releases = await NodeReleaseCache.get()
   const versions = NodeReleaseVersion.getVersions(releases)
   return versions.map((version, index) => ({
-    label: version,
-    insertText: version,
     detail: 'Node.js version',
+    insertText: version,
+    label: version,
     sortText: `${String(index).padStart(6, '0')}-${version}`,
   }))
 }
-

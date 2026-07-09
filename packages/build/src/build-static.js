@@ -18,6 +18,12 @@ const { commitHash } = await exportStatic({
 
 await cp(
   path.join(root, 'dist2'),
-  path.join(root, 'dist', commitHash, 'extensions', 'builtin.language-features-nvmrc'),
+  path.join(
+    root,
+    'dist',
+    commitHash,
+    'extensions',
+    'builtin.language-features-nvmrc',
+  ),
   { recursive: true, force: true },
 )

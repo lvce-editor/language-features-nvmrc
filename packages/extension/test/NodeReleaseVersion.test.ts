@@ -13,4 +13,3 @@ test('getVersions', () => {
     ]),
   ).toEqual(['v22.11.0', 'v20.18.1'])
 })
-

@@ -13,12 +13,11 @@ export const activate = (): void => {
   state.isActivated = true
   vscode.registerCompletionProvider(NodeReleaseCompletion)
   vscode.registerCommand({
-    id: 'nvmrc.test.setNodeReleases',
     execute(releases: readonly NodeReleaseCache.NodeRelease[]): void {
       NodeReleaseCache.set(releases)
     },
+    id: 'nvmrc.test.setNodeReleases',
   })
 }
 
 export const deactivate = (): void => {}
-

@@ -4,21 +4,24 @@ export interface NodeRelease {
   readonly version?: unknown
 }
 
-let cachedReleases: readonly NodeRelease[] | undefined
+const state: {
+  releases: readonly NodeRelease[] | undefined
+} = {
+  releases: undefined,
+}
 
 export const get = async (): Promise<readonly NodeRelease[]> => {
-  if (cachedReleases) {
-    return cachedReleases
+  if (state.releases) {
+    return state.releases
   }
-  cachedReleases = await NodeReleaseIndex.fetchNodeReleaseIndex()
-  return cachedReleases
+  state.releases = await NodeReleaseIndex.fetchNodeReleaseIndex()
+  return state.releases
 }
 
 export const set = (releases: readonly NodeRelease[]): void => {
-  cachedReleases = releases
+  state.releases = releases
 }
 
 export const clear = (): void => {
-  cachedReleases = undefined
+  state.releases = undefined
 }
-
