@@ -3,7 +3,7 @@ import {
   expectCompletionItem,
   openNvmrcCompletion,
   releases,
-} from './_nvmrcCompletion.ts'
+} from './_nvmrcCompletion.js'
 
 export const name = 'nvmrc.completion-v-prefix'
 
