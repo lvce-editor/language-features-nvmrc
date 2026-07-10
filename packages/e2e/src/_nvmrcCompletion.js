@@ -1,22 +1,21 @@
-interface NodeRelease {
-  readonly version?: unknown
-}
+// @ts-check
 
-interface TestApi {
-  readonly Command: any
-  readonly Editor: any
-  readonly expect: any
-  readonly FileSystem: any
-  readonly Locator: any
-  readonly Main: any
-  readonly Workspace: any
-}
+/**
+ * @typedef {import('@lvce-editor/test-with-playwright').TestApi} TestApi
+ * @typedef {{ readonly version?: unknown }} NodeRelease
+ */
 
+/**
+ * @param {Pick<TestApi, 'Command' | 'Editor' | 'FileSystem' | 'Main' | 'Workspace'>} api
+ * @param {readonly NodeRelease[]} releases
+ * @param {string} [text]
+ * @returns {Promise<void>}
+ */
 export const openNvmrcCompletion = async (
-  { Command, Editor, FileSystem, Main, Workspace }: TestApi,
-  releases: readonly NodeRelease[],
+  { Command, Editor, FileSystem, Main, Workspace },
+  releases,
   text = '',
-): Promise<void> => {
+) => {
   const tmpDir = await FileSystem.getTmpDir()
   await Workspace.setPath(tmpDir)
   await Command.execute(
@@ -30,11 +29,17 @@ export const openNvmrcCompletion = async (
   await Editor.openCompletion()
 }
 
+/**
+ * @param {Pick<TestApi, 'expect' | 'Locator'>} api
+ * @param {number} index
+ * @param {string} label
+ * @returns {Promise<void>}
+ */
 export const expectCompletionItem = async (
-  { expect, Locator }: TestApi,
-  index: number,
-  label: string,
-): Promise<void> => {
+  { expect, Locator },
+  index,
+  label,
+) => {
   const completions = Locator('#Completions')
   await expect(completions).toBeVisible()
   const completionItems = completions.locator('.EditorCompletionItem')
