@@ -1,3 +1,4 @@
+import type { CompletionItem } from '@lvce-editor/api'
 import * as NodeReleaseCache from '../NodeReleaseCache/NodeReleaseCache.ts'
 import * as NodeReleaseVersion from '../NodeReleaseVersion/NodeReleaseVersion.ts'
 
@@ -5,17 +6,11 @@ interface TextDocument {
   readonly languageId: string
   readonly text: string
   readonly uri: string
-  readonly version: number
-}
-
-interface CompletionItem {
-  readonly detail: string
-  readonly insertText: string
-  readonly label: string
-  readonly sortText: string
 }
 
 export const languageId = 'nvmrc'
+
+export const id = 'nvmrc'
 
 export const triggerCharacters: readonly string[] = ['v', '.']
 
