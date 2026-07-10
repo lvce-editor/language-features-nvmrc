@@ -18,9 +18,16 @@
       "label": "Nvmrc: Set Test Node Releases"
     }
   ],
+  "completionProviders": [
+    {
+      "id": "nvmrc",
+      "languageId": "nvmrc"
+    }
+  ],
   "languages": [
     {
       "id": "nvmrc",
+      "extensions": [".nvmrc"],
       "fileNames": [".nvmrc"]
     }
   ]
