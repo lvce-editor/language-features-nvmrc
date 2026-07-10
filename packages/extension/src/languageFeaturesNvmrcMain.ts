@@ -1,3 +1,6 @@
-import { main } from './parts/Main/Main.ts'
+import { activate } from './parts/Main/Main.ts'
 
-await main()
+// eslint-disable-next-line unicorn/no-top-level-side-effects
+await activate()
+
+export { activate, deactivate } from './parts/Main/Main.ts'
