@@ -3,7 +3,7 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 import {
   expectCompletionItem,
   openNvmrcCompletion,
-} from './_nvmrcCompletion.ts'
+} from './_nvmrcCompletion.js'
 
 export const name = 'nvmrc.completion-ignores-invalid-release'
 
