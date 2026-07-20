@@ -20,16 +20,16 @@
   "license": "MIT",
   "devDependencies": {
     "@lerna/legacy-package-management": "^8.2.4",
-    "@lvce-editor/api": "^8.29.0",
-    "@lvce-editor/eslint-config": "^16.4.0",
-    "@lvce-editor/server": "0.86.1",
-    "@types/node": "^26.0.0",
+    "@lvce-editor/api": "^8.54.0",
+    "@lvce-editor/eslint-config": "^17.0.3",
+    "@lvce-editor/server": "0.93.0",
+    "@types/node": "^26.1.1",
     "eslint": "^10.7.0",
     "jest": "^30.4.2",
     "lerna": "^8.2.3",
     "prettier": "^4.0.0-alpha.10",
     "ts-jest": "^29.4.11",
-    "typescript": "^6.0.3"
+    "typescript": "^7.0.2"
   },
   "prettier": {
     "semi": false,
