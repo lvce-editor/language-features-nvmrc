@@ -18,7 +18,11 @@ fs.rmSync(join(root, 'dist'), { recursive: true, force: true })
 fs.mkdirSync(path.join(root, 'dist'))
 
 fs.copyFileSync(join(root, 'README.md'), join(root, 'dist', 'README.md'))
-fs.copyFileSync(join(extension, 'icon.png'), join(root, 'dist', 'icon.png'))
+fs.mkdirSync(join(root, 'dist', 'media'))
+fs.copyFileSync(
+  join(extension, 'media', 'icon.png'),
+  join(root, 'dist', 'media', 'icon.png'),
+)
 fs.copyFileSync(
   join(extension, 'extension.json'),
   join(root, 'dist', 'extension.json'),
