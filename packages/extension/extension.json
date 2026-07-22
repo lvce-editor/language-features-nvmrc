@@ -5,6 +5,11 @@
   "repository": "https://github.com/lvce-editor/language-features-nvmrc",
   "browser": "dist/languageFeaturesNvmrcMain.js",
   "isolated": true,
+  "contentSecurityPolicy": [
+    "default-src 'none'",
+    "connect-src https://nodejs.org",
+    "script-src 'self'"
+  ],
   "icon": "./media/icon.png",
   "categories": ["Programming Languages"],
   "activation": [
