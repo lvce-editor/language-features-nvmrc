@@ -22,12 +22,12 @@
   "license": "MIT",
   "devDependencies": {
     "@lvce-editor/api": "^8.54.0",
-    "@lvce-editor/eslint-config": "^17.0.3",
+    "@lvce-editor/eslint-config": "^17.1.0",
     "@types/node": "^26.1.1",
     "eslint": "^10.7.0",
     "jest": "^30.4.2",
     "prettier": "^4.0.0-alpha.10",
-    "ts-jest": "^29.4.11",
+    "ts-jest": "^29.4.12",
     "typescript": "^6.0.3"
   },
   "prettier": {
