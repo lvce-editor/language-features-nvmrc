@@ -19,6 +19,8 @@ export const test: Test = async ({
   ])
   await FileSystem.writeFile(`${tmpDir}/.nvmrc`, 'v20.18.1\nv22.11.0')
   await Main.openUri(`${tmpDir}/.nvmrc`)
+  await Editor.setCursor(1, 8)
+  await Editor.type(' ')
 
   await Editor.shouldHaveDiagnostics([
     {

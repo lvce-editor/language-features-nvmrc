@@ -21,6 +21,8 @@ export const test: Test = async ({
     '# use Node.js 22\n22 # partial versions are supported\nmirror=example',
   )
   await Main.openUri(`${tmpDir}/.nvmrc`)
+  await Editor.setCursor(2, 14)
+  await Editor.type(' ')
 
   await Editor.shouldHaveDiagnostics([])
 }
