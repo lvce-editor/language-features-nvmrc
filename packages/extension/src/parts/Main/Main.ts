@@ -2,9 +2,11 @@ import {
   activate as activateExtensionApi,
   registerCommand,
   registerCompletionProvider,
+  registerDiagnosticProvider,
 } from '@lvce-editor/api'
 import * as NodeReleaseCache from '../NodeReleaseCache/NodeReleaseCache.ts'
 import * as NodeReleaseCompletion from '../NodeReleaseCompletion/NodeReleaseCompletion.ts'
+import * as NvmrcDiagnosticProvider from '../NvmrcDiagnosticProvider/NvmrcDiagnosticProvider.ts'
 
 interface LegacyVscode {
   readonly registerCommand: (command: {
@@ -14,6 +16,7 @@ interface LegacyVscode {
     readonly id: string
   }) => void
   readonly registerCompletionProvider: (provider: unknown) => void
+  readonly registerDiagnosticProvider?: (provider: unknown) => void
 }
 
 const state = {
@@ -42,11 +45,13 @@ export const activate = async (): Promise<void> => {
   const legacyVscode = getLegacyVscode()
   if (legacyVscode) {
     legacyVscode.registerCompletionProvider(NodeReleaseCompletion)
+    legacyVscode.registerDiagnosticProvider?.(NvmrcDiagnosticProvider)
     legacyVscode.registerCommand(command)
     return
   }
   await activateExtensionApi()
   registerCompletionProvider(NodeReleaseCompletion)
+  registerDiagnosticProvider(NvmrcDiagnosticProvider)
   registerCommand(command)
 }
 
