@@ -1,6 +1,7 @@
 import * as NodeReleaseIndex from '../NodeReleaseIndex/NodeReleaseIndex.ts'
 
 export interface NodeRelease {
+  readonly lts?: unknown
   readonly version?: unknown
 }
 

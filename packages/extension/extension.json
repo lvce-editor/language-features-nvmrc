@@ -15,6 +15,7 @@
   "activation": [
     "onLanguage:nvmrc",
     "onCompletion:nvmrc",
+    "onDiagnostic:nvmrc",
     "onCommand:nvmrc.test.setNodeReleases"
   ],
   "commands": [
@@ -26,6 +27,12 @@
   "completionProviders": [
     {
       "id": "nvmrc",
+      "languageId": "nvmrc"
+    }
+  ],
+  "diagnosticProviders": [
+    {
+      "id": "nvmrc.provideDiagnostics",
       "languageId": "nvmrc"
     }
   ],
