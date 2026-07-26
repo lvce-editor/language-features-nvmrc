@@ -1,6 +1,6 @@
 // cspell:ignore iojs
-import { afterEach, expect, test } from '@jest/globals'
 import type { Diagnostic } from '@lvce-editor/api'
+import { afterEach, expect, test } from '@jest/globals'
 import * as NodeReleaseCache from '../src/parts/NodeReleaseCache/NodeReleaseCache.ts'
 import * as NvmrcDiagnosticProvider from '../src/parts/NvmrcDiagnosticProvider/NvmrcDiagnosticProvider.ts'
 
