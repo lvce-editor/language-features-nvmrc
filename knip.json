@@ -1,0 +1,37 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "workspaces": {
+    ".": {
+      "entry": [
+        "scripts/build.js",
+        "scripts/build-static.js",
+        "scripts/computeNodeModulesCacheKey.js"
+      ],
+      "project": ["*.js", "scripts/*.js"]
+    },
+    "packages/build": {
+      "entry": [
+        "src/build.js",
+        "src/build-extension.js",
+        "src/build-static.js",
+        "src/dev.js"
+      ],
+      "project": ["src/**/*.js"]
+    },
+    "packages/e2e": {
+      "entry": ["src/**/*.{js,ts}"],
+      "project": ["src/**/*.{js,ts}"]
+    },
+    "packages/extension": {
+      "entry": ["src/languageFeaturesNvmrcMain.ts", "test/**/*.test.ts"],
+      "project": ["src/**/*.ts", "test/**/*.ts"],
+      "ignore": [
+        "src/parts/NodeReleaseCompletion/NodeReleaseCompletion.ts",
+        "src/parts/NvmrcDiagnosticProvider/NvmrcDiagnosticProvider.ts"
+      ]
+    },
+    "packages/server": {
+      "ignoreDependencies": ["@lvce-editor/server"]
+    }
+  }
+}
