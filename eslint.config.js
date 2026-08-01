@@ -1,13 +1,13 @@
-import * as actions from '@lvce-editor/eslint-plugin-github-actions'
+import { defineConfig } from 'eslint/config'
 import * as config from '@lvce-editor/eslint-config'
 
-export default [
+export default defineConfig([
   ...config.default,
-  ...actions.default,
+  ...config.recommendedActions,
   {
     files: ['packages/e2e/src/nvmrc.completion-*.ts'],
     rules: {
       'e2e/no-imports': 'off',
     },
   },
-]
+])

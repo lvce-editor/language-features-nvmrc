@@ -20,8 +20,7 @@
   "author": "Lvce Editor",
   "license": "MIT",
   "devDependencies": {
-    "@lvce-editor/eslint-config": "^17.6.0",
-    "@lvce-editor/eslint-plugin-github-actions": "^17.6.0",
+    "@lvce-editor/eslint-config": "^18.0.0",
     "@types/node": "^26.1.1",
     "eslint": "^10.8.0",
     "knip": "^6.29.0",
