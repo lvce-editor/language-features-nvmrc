@@ -14,9 +14,10 @@
         "src/build.js",
         "src/build-extension.js",
         "src/build-static.js",
-        "src/dev.js"
+        "src/dev.js",
+        "test/**/*.test.js"
       ],
-      "project": ["src/**/*.js"]
+      "project": ["src/**/*.js", "test/**/*.js"]
     },
     "packages/e2e": {
       "entry": ["src/**/*.{js,ts}"],
