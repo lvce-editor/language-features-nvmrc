@@ -10,7 +10,6 @@
     "connect-src https://nodejs.org",
     "script-src 'self'"
   ],
-  "icon": "./media/icon.png",
   "categories": ["Programming Languages"],
   "activation": [
     "onLanguage:nvmrc",
