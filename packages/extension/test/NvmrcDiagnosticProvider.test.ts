@@ -45,15 +45,15 @@ test('provideDiagnostics - version not found', async () => {
 })
 
 test('provideDiagnostics - invalid version', async () => {
-  await expect(getDiagnostics('v22..0')).resolves.toEqual([
+  await expect(getDiagnostics('v24.19.')).resolves.toEqual([
     {
       columnIndex: 0,
-      endColumnIndex: 6,
+      endColumnIndex: 7,
       endRowIndex: 0,
-      message: 'Invalid Node.js version: v22..0',
+      message: 'Invalid Node.js version: v24.19.',
       rowIndex: 0,
       source: 'nvmrc',
-      type: 'warning',
+      type: 'error',
     },
   ])
 })
