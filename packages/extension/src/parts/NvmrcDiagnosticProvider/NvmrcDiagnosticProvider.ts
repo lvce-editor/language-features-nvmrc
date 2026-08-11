@@ -27,7 +27,11 @@ export const id = 'nvmrc.provideDiagnostics'
 
 export const languageId = 'nvmrc'
 
-const toDiagnostic = (entry: NvmrcEntry, message: string): Diagnostic => {
+const toDiagnostic = (
+  entry: NvmrcEntry,
+  message: string,
+  type: 'error' | 'warning' = 'warning',
+): Diagnostic => {
   return {
     columnIndex: entry.columnIndex,
     endColumnIndex: entry.endColumnIndex,
@@ -35,7 +39,7 @@ const toDiagnostic = (entry: NvmrcEntry, message: string): Diagnostic => {
     message,
     rowIndex: entry.rowIndex,
     source: 'nvmrc',
-    type: 'warning',
+    type,
   }
 }
 
@@ -114,7 +118,11 @@ const getVersionDiagnostic = async (
     return toDiagnostic(entry, `Node.js LTS alias not found: ${entry.value}`)
   }
   if (!numericVersionRegex.test(entry.value)) {
-    return toDiagnostic(entry, `Invalid Node.js version: ${entry.value}`)
+    return toDiagnostic(
+      entry,
+      `Invalid Node.js version: ${entry.value}`,
+      'error',
+    )
   }
   const releases = await NodeReleaseCache.get()
   if (NodeReleaseVersion.hasMatchingVersion(releases, entry.value)) {
