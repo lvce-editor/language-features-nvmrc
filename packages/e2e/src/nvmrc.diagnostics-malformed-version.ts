@@ -19,7 +19,8 @@ export const test: Test = async ({
   await Editor.setCursor(0, 7)
   await Editor.type(' ')
 
-  await expect(Locator('.Diagnostic')).toBeVisible()
+  const diagnostic = Locator('.Diagnostic')
+  await expect(diagnostic).toBeVisible()
   await Editor.shouldHaveDiagnostics([
     {
       columnIndex: 0,
