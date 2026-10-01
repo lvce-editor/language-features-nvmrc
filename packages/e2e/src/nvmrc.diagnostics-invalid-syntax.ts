@@ -5,7 +5,9 @@ export const name = 'nvmrc.diagnostics-invalid-syntax'
 export const test: Test = async ({
   Command,
   Editor,
+  expect,
   FileSystem,
+  Locator,
   Main,
   Settings,
   Workspace,
@@ -22,6 +24,7 @@ export const test: Test = async ({
   await Editor.setCursor(1, 8)
   await Editor.type(' ')
 
+  await expect(Locator('.Diagnostic')).toBeVisible()
   await Editor.shouldHaveDiagnostics([
     {
       columnIndex: 0,

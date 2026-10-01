@@ -4,7 +4,9 @@ export const name = 'nvmrc.diagnostics-malformed-version'
 
 export const test: Test = async ({
   Editor,
+  expect,
   FileSystem,
+  Locator,
   Main,
   Settings,
   Workspace,
@@ -17,6 +19,7 @@ export const test: Test = async ({
   await Editor.setCursor(0, 7)
   await Editor.type(' ')
 
+  await expect(Locator('.Diagnostic')).toBeVisible()
   await Editor.shouldHaveDiagnostics([
     {
       columnIndex: 0,
