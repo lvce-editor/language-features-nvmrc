@@ -11,7 +11,7 @@ export const test: Test = async ({
   Workspace,
 }) => {
   const tmpDir = await FileSystem.getTmpDir()
-  await Workspace.setPath(tmpDir)
+  await Workspace.setUri(tmpDir)
   await Settings.update({ 'editor.diagnostics': true })
   await Command.executeExtensionCommand('nvmrc.test.setNodeReleases', [
     { version: 'v22.11.0' },

@@ -10,7 +10,7 @@ export const test: Test = async ({
   Workspace,
 }) => {
   const tmpDir = await FileSystem.getTmpDir()
-  await Workspace.setPath(tmpDir)
+  await Workspace.setUri(tmpDir)
   await Settings.update({ 'editor.diagnostics': true })
   await FileSystem.writeFile(`${tmpDir}/.nvmrc`, 'v24.19.')
   await Main.openUri(`${tmpDir}/.nvmrc`)
