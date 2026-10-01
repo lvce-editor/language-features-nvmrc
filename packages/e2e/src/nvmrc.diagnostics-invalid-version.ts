@@ -5,13 +5,15 @@ export const name = 'nvmrc.diagnostics-invalid-version'
 export const test: Test = async ({
   Command,
   Editor,
+  expect,
   FileSystem,
+  Locator,
   Main,
   Settings,
   Workspace,
 }) => {
   const tmpDir = await FileSystem.getTmpDir()
-  await Workspace.setPath(tmpDir)
+  await Workspace.setUri(tmpDir)
   await Settings.update({ 'editor.diagnostics': true })
   await Command.executeExtensionCommand('nvmrc.test.setNodeReleases', [
     { version: 'v22.11.0' },
@@ -22,6 +24,8 @@ export const test: Test = async ({
   await Editor.setCursor(0, 7)
   await Editor.type(' ')
 
+  const diagnostic = Locator('.Diagnostic')
+  await expect(diagnostic).toBeVisible()
   await Editor.shouldHaveDiagnostics([
     {
       columnIndex: 0,
