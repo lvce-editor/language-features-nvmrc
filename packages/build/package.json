@@ -12,7 +12,7 @@
   "license": "MIT",
   "devDependencies": {
     "@lvce-editor/package-extension": "^3.7.0",
-    "@lvce-editor/shared-process": "0.118.24",
+    "@lvce-editor/shared-process": "0.121.21",
     "@rollup/plugin-commonjs": "^29.0.3",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "esbuild": "^0.28.2",
