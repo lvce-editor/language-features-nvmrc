@@ -10,6 +10,7 @@ const root = join(__dirname, '..')
 const locations = [
   'package.json',
   'package-lock.json',
+  '.nvmrc',
   '.github/workflows/ci.yml',
   '.github/workflows/pr.yml',
   '.github/workflows/release.yml',
